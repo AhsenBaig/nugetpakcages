@@ -1,30 +1,42 @@
 # NuGet package manager - Test push package
+
+> Personal Access Token is ghp_<random_token_values>
+
 ## Initial Setup
 Only need to do this once unless you setup expiration.
-### Setup a personal access token
-#### GitHub -> Settings -> Developer Settings -> Personal access tokens
+### Setup a personal access token (GitHub -> Settings -> Developer Settings -> Personal access tokens)
 
 > **NOTE:** Had to check **repo** before selecting write:packages and delete:packages. It seems to be a bug in GitHub. Use best practices on **access** and **expirations**.
 ![PAT Screenshot](images/GitHub-personal_access_token_dark.png#gh-dark-mode-only)
 ![PAT Screenshot](images/GitHub-personal_access_token_light.png#gh-light-mode-only)
 
 > **NOTE:** Make sure to copy your personal access token now. You won’t be able to see it again!
-![PAT Key Screenshot](images/GitHub-personal_access_token_key_dark.png#gh-dark-mode-only)
-![PAT Key Screenshot](images/GitHub-personal_access_token_key_light.png#gh-light-mode-only)
+>
+>![PAT Key Screenshot](images/GitHub-personal_access_token_key_dark.png#gh-dark-mode-only)
+>![PAT Key Screenshot](images/GitHub-personal_access_token_key_light.png#gh-light-mode-only)
 
 ### Configure NuGet source
 
-Only need to do this once unless your <YOUR_PAT_TOKEN> token expired.
+Only need to do this once unless your ghp_<random_token_values> token expired.
 
-> Add Source to NuGet
-```ps
-nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/AhsenBaig/index.json" -UserName <YOUR_USERNAME> -Password <YOUR_PAT_TOKEN>
-```
+> Add Source to NuGet - Feel free to rename the -Name value from "GitHub"
+>```ps
+>nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/<YOUR_USERNAME Or ORGANIZATION>/index.json" -UserName <YOUR_USERNAME> -Password ghp_<random_token_values>
+>```
 
 > Add apiKey to NuGet
-```ps
-nuget setapikey <YOUR_PAT_TOKEN> -Source "https://nuget.pkg.github.com/AhsenBaig/index.json"
-```
+>```ps
+>nuget setapikey <YOUR_PAT_TOKEN> -Source "https://nuget.pkg.github.com/<YOUR_USERNAME Or ORGANIZATION>/index.json"
+>```
+
+> Examples
+>```ps
+>nuget source Add -Name "MyGitHub" -Source "https://nuget.pkg.github.com/AhsenBaig/index.json" -UserName AhsenBaig -Password ghp_<random_token_values>
+>```
+>```ps
+>nuget setapikey ghp_<random_token_values> -Source "https://nuget.pkg.github.com/AhsenBaig/index.json"
+>```
+
 ---
 ## Create .net package
 ```ps
@@ -39,9 +51,9 @@ cd nugetpackages
 ```xml
 <Version>1.0.0</Version>
 <Authors>Octocat and AhsenBaig</Authors>
-<Company>AhsenBaig</Company>
+<Company><YOUR_USERNAME Or ORGANIZATION></Company>
 <PackageDescription>This package adds an Octocat!</PackageDescription>
-<RepositoryUrl>https://github.com/AhsenBaig/nugetpackages</RepositoryUrl>
+<RepositoryUrl>https://github.com/<YOUR_USERNAME Or ORGANIZATION>/nugetpackages</RepositoryUrl>
 ```
 
 ### Create nuget.config
@@ -50,7 +62,7 @@ cd nugetpackages
 <configuration>
     <packageSources>
         <clear />
-        <add key="GitHub" value="https://nuget.pkg.github.com/AhsenBaig/index.json" />
+        <add key="GitHub" value="https://nuget.pkg.github.com/<YOUR_USERNAME Or ORGANIZATION>/index.json" />
     </packageSources>
 </configuration>
 ```
