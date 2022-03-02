@@ -19,14 +19,14 @@ Only need to do this once unless you setup expiration.
 
 Only need to do this once unless your ghp_<random_token_values> token expired.
 
-> Add Source to NuGet - Feel free to rename the -Name value from "GitHub"
+> Add Source to NuGet - Feel free to rename the -Name value from "MyGitHub"
 >```ps
->nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/<YOUR_USERNAME Or ORGANIZATION>/index.json" -UserName <YOUR_USERNAME> -Password ghp_<random_token_values>
+>nuget source Add -Name "MyGitHub" -Source "https://nuget.pkg.github.com/<YOUR_USERNAME Or ORGANIZATION>/index.json" -UserName <YOUR_USERNAME> -Password ghp_<random_token_values>
 >```
 
 > Add apiKey to NuGet
 >```ps
->nuget setapikey <YOUR_PAT_TOKEN> -Source "https://nuget.pkg.github.com/<YOUR_USERNAME Or ORGANIZATION>/index.json"
+>nuget setapikey ghp_<random_token_values> -Source "https://nuget.pkg.github.com/<YOUR_USERNAME Or ORGANIZATION>/index.json"
 >```
 
 > Examples
@@ -62,7 +62,7 @@ cd nugetpackages
 <configuration>
     <packageSources>
         <clear />
-        <add key="GitHub" value="https://nuget.pkg.github.com/<YOUR_USERNAME Or ORGANIZATION>/index.json" />
+        <add key="MyGitHub" value="https://nuget.pkg.github.com/<YOUR_USERNAME Or ORGANIZATION>/index.json" />
     </packageSources>
 </configuration>
 ```
@@ -73,12 +73,13 @@ dotnet pack --configuration Release
 ```
 
 #### Push the package
+-Source represents what you named 
 ```ps
-nuget push "bin/Release/OctocatApp.1.0.0.nupkg" -Source "GitHub"
+nuget push "bin/Release/OctocatApp.1.0.0.nupkg" -Source "MyGitHub"
 ```
 
 #### or
 
 ```ps
-dotnet nuget push "/bin/Release/nugetpakcages.1.0.0.nupkg" --source "GitHub"
+dotnet nuget push "/bin/Release/nugetpakcages.1.0.0.nupkg" --source "MyGitHub"
 ```
