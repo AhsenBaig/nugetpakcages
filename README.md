@@ -16,8 +16,13 @@ Only need to do this once unless you setup expiration.
 
 Only need to do this once unless your <YOUR_PAT_TOKEN> token expired.
 
+> Add Source to NuGet
 ```ps
-nuget source Add -Name "AhsenBaigGitHub" -Source "https://nuget.pkg.github.com/AhsenBaig/index.json" -UserName <YOUR_USERNAME> -Password <YOUR_PAT_TOKEN>
+nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/AhsenBaig/index.json" -UserName <YOUR_USERNAME> -Password <YOUR_PAT_TOKEN>
+```
+
+> Add apiKey to NuGet
+```ps
 nuget setapikey <YOUR_PAT_TOKEN> -Source "https://nuget.pkg.github.com/AhsenBaig/index.json"
 ```
 ---
@@ -45,7 +50,7 @@ cd nugetpackages
 <configuration>
     <packageSources>
         <clear />
-        <add key="AhsenBaigGitHub" value="https://nuget.pkg.github.com/AhsenBaig/index.json" />
+        <add key="GitHub" value="https://nuget.pkg.github.com/AhsenBaig/index.json" />
     </packageSources>
 </configuration>
 ```
@@ -57,11 +62,11 @@ dotnet pack --configuration Release
 
 #### Push the package
 ```ps
-nuget push "bin/Release/OctocatApp.1.0.0.nupkg" -Source "AhsenBaigGitHub"
+nuget push "bin/Release/OctocatApp.1.0.0.nupkg" -Source "GitHub"
 ```
 
 #### or
 
 ```ps
-dotnet nuget push "/bin/Release/nugetpakcages.1.0.0.nupkg" --source "AhsenBaigGitHub"
+dotnet nuget push "/bin/Release/nugetpakcages.1.0.0.nupkg" --source "GitHub"
 ```
