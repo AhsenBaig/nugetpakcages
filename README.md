@@ -53,7 +53,7 @@ cd nugetpackages
 <Authors>Octocat and AhsenBaig</Authors>
 <Company><YOUR_USERNAME Or ORGANIZATION></Company>
 <PackageDescription>This package adds an Octocat!</PackageDescription>
-<RepositoryUrl>https://github.com/<YOUR_USERNAME Or ORGANIZATION>/nugetpackages</RepositoryUrl>
+<RepositoryUrl>https://github.com/<YOUR_USERNAME Or ORGANIZATION>/packages</RepositoryUrl>
 ```
 
 ### Create nuget.config
